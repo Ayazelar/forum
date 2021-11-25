@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button defaultHref="home" slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+  <!-- <ng-container>
+
+    <div class="register">
+      <ion-label>
+        <h1>Sign Up</h1>
+      </ion-label>
+      <ion-button color="light"><ion-icon name="logo-google"></ion-icon>Continue with Google</ion-button>
+      <ion-button color="light"><ion-icon name="logo-apple"></ion-icon>Continue with Apple</ion-button>    
+      <div class="divider">
+        <div class="line"></div>
+        <span>OR</span>
+        <div class="line"></div>
+      </div>
+      <ion-item lines="none">
+        <ion-input class="short" type="name" placeholder="Nick"></ion-input>
+        <ion-input class="short" type="text" placeholder="Birthday"></ion-input>
+      </ion-item>
+     
+      <ion-input class="long" type="email" placeholder="Email"></ion-input>
+      <ion-button class="contiune" color="secondary">Continue</ion-button>
+      <p>Already a have account? <strong>Login</strong></p>
+    </div>
+
+  </ng-container> -->
+  
+  <!-- <ng-container>
+
+    <div class="login">
+      <ion-label>
+        <h1>Login</h1>
+      </ion-label>
+      <ion-button color="light"><ion-icon name="logo-google"></ion-icon>Continue with Google</ion-button>
+      <ion-button color="light"><ion-icon name="logo-apple"></ion-icon>Continue with Apple</ion-button>    
+      <div class="divider">
+        <div class="line"></div>
+        <span>OR</span>
+        <div class="line"></div>
+      </div>
+     
+      <ion-input class="long" type="email" placeholder="Email"></ion-input>
+      <ion-input class="long" type="password" placeholder="Password"></ion-input>
+      <ion-button class="contiune" color="secondary">Continue</ion-button>
+    </div>
+
+  </ng-container> -->
+  <div class="spinner-container" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ng-container *ngIf="this.user">
+    
+    <div class="user">
+      <ion-avatar>
+        <img [src]="this.user.profile_picture" >
+      </ion-avatar>
+      <ion-label>
+        <h1>{{this.user.nick}}</h1>
+        <p>RANK: {{this.user.level}}</p>
+        <span (click)="followersModal()">{{this.user.followers.length}} Followers</span>
+        <span (click)="followingsModal()">{{this.user.followings.length}} Followings</span>
+      </ion-label>
+      <ion-segment value="forums" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="forums">
+          <ion-label>Forums</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="comments">
+          <ion-label>Comments</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="liked">
+          <ion-label>Likeds</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    <div class="comments">
+      <ion-card *ngFor="let item of this.comments">
+        <ion-card-content>
+          <ion-label>
+            <p>{{item.content}}</p>
+          </ion-label>
+          <ion-button color="light"><ion-icon name="heart-outline"></ion-icon>{{item.likes?.length}}</ion-button>
+          <ion-button color="light"><ion-icon name="heart-dislike-outline"></ion-icon>{{item.dislikes?.length}}</ion-button>
+          <ion-button color="light"><ion-icon name="chatbox-outline"></ion-icon>{{item.comments?.length}}</ion-button>
+          <ion-button [disabled]="this.cycle=='liked'" color="light" class="trash" (click)="presentAlert(item._id)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ng-container>
+  
+</ion-content>

@@ -1,0 +1,12 @@
+<ion-card>
+  <ion-card-header>
+    <ion-label>
+      <h1>New Comment</h1>
+    </ion-label>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-textarea rows="16" cols="16" [(ngModel)]="myVal" placeholder="Enter any notes here..."></ion-textarea>
+    <ion-button expand="block" color="primary" (click)="refresh()">Send Comment</ion-button>
+    <ion-label color="dark">{{myVal1}}</ion-label>
+  </ion-card-content>
+</ion-card>

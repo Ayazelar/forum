@@ -1,0 +1,18 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Followers</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list >
+    <ion-item *ngFor="let test of this.user?.followers" lines="none">
+      <ion-avatar slot="start">
+        <img [src]="test?.profile_picture">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{test?.nick}}</h2>
+        <ion-button color="light" slot="end" (click)="remove(test?._id)">Remowe</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

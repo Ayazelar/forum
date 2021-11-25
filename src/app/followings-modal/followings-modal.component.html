@@ -1,0 +1,21 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Followings</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div class="spinner-container" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-list >
+    <ion-item *ngFor="let test of this.user?.followings" lines="none">
+      <ion-avatar slot="start">
+        <img [src]="test?.profile_picture">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{test?.nick}}</h2>
+        <ion-button color="light" slot="end" (click)="unfollow(test?._id)">Unfollow</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,102 @@
+:host{
+    ion-content{
+        .main-comment{
+            ion-card{
+                margin: 0;
+                ion-card-header {
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    ion-avatar {
+                      display: flex;
+                      justify-content: center;
+                      img {
+                        width: 40px;
+                        height: 40px;
+                      }
+                    }
+                    .nick {
+                      margin-left: 3px;
+                      font-weight: 600;
+                    }
+                    ion-button {
+                      --padding-start: 5px;
+                    }
+                    ion-text{
+                        right: 0;
+                        margin-right: 20px;
+                        position: absolute;
+                        font-weight: 600;
+                    }
+                  }
+                  ion-card-content {
+                    ion-label {
+                      p {
+                        font-weight: 600;
+                        margin-bottom: 20px;
+                        color: rgb(95, 94, 94);
+                      }
+                    }
+                    ion-button {
+                      font-size: 12px;
+                      --padding-start: 10px;
+                      --padding-end:10px;
+                      ion-icon{
+                        margin-right: 3px;
+                      }
+                    }
+                    img{
+                        border-radius: 4px;
+                    }
+                  }
+            }
+            .add-comment{
+                margin: 10px;
+                --border-radius:18px;
+                font-weight: 600;
+            }
+        }
+        
+    }
+    .comment-answers{
+        ion-card{
+            margin: 5px 8px 0 14px;
+            ion-card-header {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                ion-avatar {
+                  display: flex;
+                  justify-content: center;
+                  img {
+                    width: 40px;
+                    height: 40px;
+                  }
+                }
+                .nick {
+                  margin-left: 3px;
+                  font-weight: 600;
+                }
+                ion-button {
+                  --padding-start: 5px;
+                }
+              }
+            ion-card-content {
+                ion-label {
+                  p {
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                  }
+                }
+                ion-button {
+                  font-size: 12px;
+                  --padding-start: 10px;
+                  --padding-end:10px;
+                  ion-icon{
+                    margin-right: 3px;
+                  }
+                }
+              }
+        }
+    }
+}

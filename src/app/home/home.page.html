@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-menu-button color="dark" menu="main-menu" slot="start"></ion-menu-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="category">
+    <ion-button *ngFor="let items of this.category" color="light">{{items.name}}</ion-button>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="comments">
+    <ion-card *ngFor="let comment of this.comments" [routerLink]="['/comment-details/' + comment._id]">
+      <ion-card-header>
+        <ion-avatar>
+          <img [src]="comment.user.profile_picture" >
+        </ion-avatar>
+        <span class="nick">{{comment.user.nick}}</span>
+        <ion-button size="small" fill="clear" (click)="follow(comment.user)">{{this.followtext}}</ion-button>
+        <span class="created_at">{{comment.date | date:'HH'}}</span>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>
+          <p>{{comment.content}}</p>
+        </ion-label>
+        <ion-button color="light" (click)="like(comment._id)"><ion-icon name="heart-outline"></ion-icon>{{comment.likes.length}}</ion-button>
+        <ion-button color="light" (click)="dislike(comment._id)"><ion-icon name="heart-dislike-outline"></ion-icon>{{comment.dislikes.length}}</ion-button>
+        <ion-button color="light"><ion-icon name="chatbox-outline"></ion-icon>{{comment.comments.length}}</ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
